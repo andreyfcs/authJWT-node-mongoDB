@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/andreyfcs/authJWT-node-mongoDB/issues"
   },
-  "homepage": "https://github.com/andreyfcs/authJWT-node-mongoDB#readme"
+  "homepage": "https://github.com/andreyfcs/authJWT-node-mongoDB#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1"
+  }
 }
