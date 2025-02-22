@@ -19,3 +19,4 @@ const conectarDB = async () => {
 };
 
 module.exports = conectarDB;
+T-node-mongoDB$ ^V
