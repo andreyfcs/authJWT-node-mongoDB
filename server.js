@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const SECRET_KEY = 'seuSegredoSuperSecreto'; // Mantenha seguro no .env
@@ -67,4 +69,4 @@ app.get('/dashboard', authenticateJWT, async (req, res) => {
 });
 
 // Iniciando o servidor
-app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+app.listen(3001, () => console.log('Servidor rodando na porta 3000'));
