@@ -3,20 +3,36 @@ version: '3.8'
 services:
   app:
     build: .
-    container_name: meu_app
+    container_name: auth_app
+    restart: always
     ports:
-      - "3095:3095"
-    env_file:
-      - .env
+      - "3006:3006"
     depends_on:
       - db
+    environment:
+      - MYSQL_DB=auth_system
+      - MYSQL_USER=andreyz
+      - MYSQL_PASSWORD=af881335$$
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - SECRET_KEY=seuSegredoSuperSecreto
+    volumes:
+      - .:/app
+      - /app/node_modules
 
   db:
-    image: mysql:latest
-    container_name: meu_mysql
+    image: mysql:8.0
+    container_name: mysql_db
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: senha123
-      MYSQL_DATABASE: meu_banco
     ports:
-      - "3306:3306"
+      - "3307:3306"
+    environment:
+      - MYSQL_DATABASE=auth_system
+      - MYSQL_USER=andreyz
+      - MYSQL_PASSWORD=af881335$$
+      - MYSQL_ROOT_PASSWORD=af881335$$
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
